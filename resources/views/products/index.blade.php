@@ -24,15 +24,15 @@
 
             <div class="row justify-content-center">
 
-            <table class="table table-striped table-hover">
+            <table class="table table-striped table-hover text-center">
 
                 <thead class="table-dark">
                 <tr>
                     <th scope="col">ID</th>
+                    <th scope="col">Name</th>
                     <th scope="col">Description</th>
                     <th scope="col">Amount</th>
                     <th scope="col">Price</th>
-                    <th scope="col">Phone number</th>
                     <th scope="col">Actions</th>
                 </tr>
                 </thead>
@@ -40,24 +40,24 @@
                 <tbody>
 
                 @foreach($products as $product)
-{{--                    <tr>--}}
-{{--                        <th scope="row">{{ $user->id }}</th>--}}
-{{--                        <td>{{ $user->name }}</td>--}}
-{{--                        <td>{{ $user->surname }}</td>--}}
-{{--                        <td>{{ $user->email }}</td>--}}
-{{--                        <td>{{ $user->phone_number }}</td>--}}
-{{--                        <td>--}}
-{{--                            <a class="btn btn-primary" href="{{route('users.show', $user->id)}}">--}}
-{{--                                Show--}}
-{{--                            </a>--}}
-{{--                            <a class="btn btn-success" href="{{route('users.edit', $user->id)}}">--}}
-{{--                                Edit--}}
-{{--                            </a>--}}
-{{--                            <button data-id="{{ $user->id }}" class=" btn btn-danger delete-resource-button">--}}
-{{--                                Delete--}}
-{{--                            </button>--}}
-{{--                        </td>--}}
-{{--                    </tr>--}}
+                    <tr>
+                        <th scope="row" class="align-middle">{{ $product->id }}</th>
+                        <td class="align-middle">{{ $product->name }}</td>
+                        <td class="align-middle">{{ $product->description }}</td>
+                        <td class="align-middle">{{ $product->amount }}</td>
+                        <td class="align-middle">{{ $product->price }}</td>
+                        <td class="align-middle">
+                            <a class="btn btn-primary" href="{{route('products.show', $product->id)}}">
+                                Show
+                            </a>
+                            <a class="btn btn-success" href="{{route('products.edit', $product->id)}}">
+                                Edit
+                            </a>
+                            <button data-id="{{ $product->id }}" class=" btn btn-danger delete-resource-button">
+                                Delete
+                            </button>
+                        </td>
+                    </tr>
                 @endforeach
 
                 </tbody>
@@ -70,10 +70,11 @@
 @endsection
 
 @section('javascript_variables')
-{{--    const deleteUrl = "{{ url("products") }}"--}}
+    const deleteUrl = "{{ url("products") }}"
+    const resourceName = "Product";
 @endsection
 
 @push('javascript_files')
-{{--    @vite('resources/js/deleteResource.js')--}}
+    @vite('resources/js/deleteResource.js')
 @endpush
 

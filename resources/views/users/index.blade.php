@@ -14,7 +14,7 @@
 
         <div class="row justify-content-center">
 
-            <table class="table table-striped table-hover">
+            <table class="table table-striped table-hover text-center">
 
                 <thead class="table-dark">
                 <tr>
@@ -31,12 +31,12 @@
 
                 @foreach($users as $user)
                     <tr>
-                        <th scope="row">{{ $user->id }}</th>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->surname }}</td>
-                        <td>{{ $user->email }}</td>
-                        <td>{{ $user->phone_number }}</td>
-                        <td>
+                        <th class="align-middle" scope="row">{{ $user->id }}</th>
+                        <td class="align-middle">{{ $user->name }}</td>
+                        <td class="align-middle">{{ $user->surname }}</td>
+                        <td class="align-middle">{{ $user->email }}</td>
+                        <td class="align-middle">{{ $user->phone_number }}</td>
+                        <td class="align-middle">
                             <a class="btn btn-primary" href="{{route('users.show', $user->id)}}">
                                 Show
                             </a>
@@ -61,6 +61,7 @@
 
 @section('javascript_variables')
     const deleteUrl = "{{ url("users") }}"
+    const resourceName = "User";
 @endsection
 
 @push('javascript_files')
