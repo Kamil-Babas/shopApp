@@ -25,7 +25,8 @@ class AdminCreateProductRequest extends FormRequest
             "name" => ['required', 'min:2', 'max:500', 'string'],
             "description" => ['nullable', 'string', 'max:1500'],
             "amount" => ['required', 'min:0', 'integer'],
-            "price" => ['required', 'min:0.01', 'numeric']
+            "price" => ['required', 'min:0.01', 'numeric'],
+            "product_image" => ['file', 'mimes:jpg,bmp,png', 'nullable']
         ];
     }
 }

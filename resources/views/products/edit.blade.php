@@ -8,7 +8,7 @@
                     <div class="card-header fw-bold">{{ __('Edit product:') . " " . $product->id }}</div>
 
                     <div class="card-body">
-                        <form method="Post" action="{{ route('products.update', $product->id) }}">
+                        <form method="Post" action="{{ route('products.update', $product->id) }}" enctype="multipart/form-data">
 
                             @csrf
                             @method('put')
@@ -45,7 +45,7 @@
                                 <label for="amount" class="col-md-4 col-form-label text-md-end">{{ __('Amount') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="amount" name="amount" type="number" min="0" class="form-control @error('amount') is-invalid @enderror" name="amount" value="{{ $product->amount }}" required autocomplete="amount">
+                                    <input id="amount" name="amount" type="number" min="0" class="form-control @error('amount') is-invalid @enderror" value="{{ $product->amount }}" required autocomplete="amount">
 
                                     @error('amount')
                                     <span class="invalid-feedback" role="alert">
@@ -69,6 +69,21 @@
                                 </div>
                             </div>
 
+                            <div class="row mb-3">
+                                <label for="product_image" class="col-md-4 col-form-label text-md-end">{{ __('Image') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="product_image" type="file" class="form-control @error('product_image') is-invalid @enderror" name="product_image">
+
+                                    @error('product_image')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+
                             <div class="row mb-0">
                                 <div class="col-md-12 offset-md-6">
                                     <button type="submit" class="btn btn-primary">
@@ -78,6 +93,15 @@
                             </div>
                         </form>
                     </div>
+
+                    @isset($product->image_path)
+                        <div class="row mb-2 mt-4 align-content-center">
+                            <div class="col-md-12 d-flex justify-content-center">
+                                <img src="{{ asset('storage/' . $product->image_path) }}" alt="Product Image">
+                            </div>
+                        </div>
+                    @endisset
+
                 </div>
             </div>
         </div>

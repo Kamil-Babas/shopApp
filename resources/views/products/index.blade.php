@@ -10,6 +10,12 @@
             </div>
         @endif
 
+            @if (session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
+
             <div class="row d-flex justify-content-between align-items-center mb-3">
                 <div class="col-auto">
                     <h1 class="mb-0">{{ __('Products:') }}</h1>

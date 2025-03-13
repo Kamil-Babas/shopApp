@@ -10,14 +10,17 @@
                     <div class="card-body">
 
                         <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end fw-bold">{{ __('Name') }}</label>
+                            <label for="name"
+                                   class="col-md-4 col-form-label text-md-end fw-bold">{{ __('Name') }}</label>
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control text-center" readonly value="{{ $product->name }}">
+                                <input id="name" type="text" class="form-control text-center" readonly
+                                       value="{{ $product->name }}">
                             </div>
                         </div>
 
                         <div class="row mb-3">
-                            <label for="description" class="col-md-4 col-form-label text-md-end fw-bold">{{ __('Description') }}</label>
+                            <label for="description"
+                                   class="col-md-4 col-form-label text-md-end fw-bold">{{ __('Description') }}</label>
                             <div class="col-md-6">
                                 <textarea id="description" type="text" class="form-control align-middle" readonly>
                                     {{ $product->description }}
@@ -26,19 +29,30 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="amount" class="col-md-4 col-form-label text-md-end fw-bold">{{ __('Amount') }}</label>
+                            <label for="amount"
+                                   class="col-md-4 col-form-label text-md-end fw-bold">{{ __('Amount') }}</label>
                             <div class="col-md-6">
-                                <input id="amount" class="form-control text-center" value="{{ $product->amount }}" readonly>
+                                <input id="amount" class="form-control text-center" value="{{ $product->amount }}"
+                                       readonly>
                             </div>
                         </div>
 
                         <div class="row mb-3">
-                            <label for="price" class="col-md-4 col-form-label text-md-end fw-bold">{{ __('Price') }}</label>
+                            <label for="price"
+                                   class="col-md-4 col-form-label text-md-end fw-bold">{{ __('Price') }}</label>
                             <div class="col-md-6">
-                                <input id="price" class="form-control text-center" value="{{ $product->price }}" readonly>
+                                <input id="price" class="form-control text-center" value="{{ $product->price }}"
+                                       readonly>
                             </div>
                         </div>
 
+                        @isset($product->image_path)
+                            <div class="row mb-3 mt-4 align-content-center">
+                                <div class="col-md-12 d-flex justify-content-center">
+                                    <img src="{{ asset('storage/' . $product->image_path) }}" alt="Product Image">
+                                </div>
+                            </div>
+                        @endisset
                     </div>
                 </div>
             </div>

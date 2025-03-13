@@ -7,6 +7,7 @@ use App\Http\Requests\AdminUpdateProductRequest;
 use App\Models\Product;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class ProductController extends Controller
@@ -39,7 +40,14 @@ class ProductController extends Controller
      */
     public function store(AdminCreateProductRequest $request) : RedirectResponse
     {
-        Product::create($request->validated());
+        $product = new Product($request->validated());
+
+        if($request->hasFile('product_image')){
+            //store method returns path to file
+            $product->image_path = $request->file('product_image')->store('products');
+        }
+
+        $product->save();
 
         return redirect('/products')->with('status', "Product created successfully");
     }
@@ -72,10 +80,31 @@ class ProductController extends Controller
      */
     public function update(AdminUpdateProductRequest $request, Product $product) : RedirectResponse
     {
-        $product->fill($request->validated());
-        $product->save();
+        try
+        {
+            $oldImage = $product->image_path;
+            $product->fill($request->validated());
 
-        return redirect('/products')->with('status', "Product " . $product->id . " edited successfully" );
+            if ($request->hasFile('product_image'))
+            {
+                // update image path and store new image
+                $product->image_path = $request->file('product_image')->store('products');
+
+                // delete old image
+                if ($oldImage) {
+                    Storage::delete($oldImage);
+                }
+            }
+
+            $product->save();
+
+            return redirect('/products')->with('status', "Product {$product->id} edited successfully");
+        }
+        catch (\Exception $e)
+        {
+            return redirect('/products')->with('error', "Failed to edit product: " . $e->getMessage());
+        }
+
     }
 
     /**
@@ -86,6 +115,12 @@ class ProductController extends Controller
     public function destroy(Product $product) : JsonResponse
     {
         $productId = $product->id;
+
+        // delete image from storage
+        if(!is_null($product->image_path)) {
+            Storage::delete($product->image_path);
+        }
+
         $product->delete();
 
         return response()->json([
