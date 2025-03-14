@@ -26,7 +26,7 @@ class AdminUpdateProductRequest extends FormRequest
             "description" => ['nullable', 'string', 'max:1500'],
             "amount" => ['required', 'min:0', 'integer'],
             "price" => ['required', 'min:0.01', 'numeric'],
-            "product_image" => ['file', 'mimes:jpg,bmp,png', 'nullable']
+            "product_image" => ['file', 'mimes:jpg,bmp,png', 'nullable', 'dimensions:min_width=300,min_height=300']
         ];
     }
 }

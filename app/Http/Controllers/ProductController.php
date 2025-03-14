@@ -5,20 +5,32 @@ namespace App\Http\Controllers;
 use App\Http\Requests\adminCreateProductRequest;
 use App\Http\Requests\AdminUpdateProductRequest;
 use App\Models\Product;
+use App\Services\ProductService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
+
 class ProductController extends Controller
 {
+
+    public ProductService $productService;
+
+
+    public function __construct(ProductService $productService)
+    {
+        $this->productService = $productService;
+    }
+
+
     /**
      * Display a listing of the resource.
      * @return View
      */
     public function index() : View
     {
-        $products = Product::paginate(10);
+        $products = Product::orderBy('id', "DESC")->paginate(10);
 
         return view("products.index", compact("products"));
     }
@@ -33,24 +45,28 @@ class ProductController extends Controller
         return view('products.create');
     }
 
+
     /**
-     * Store a newly created resource in storage.
-     * @param AdminCreateProductRequest $request
+     * @param adminCreateProductRequest $request
      * @return RedirectResponse
      */
-    public function store(AdminCreateProductRequest $request) : RedirectResponse
+    public function store(AdminCreateProductRequest $request): RedirectResponse
     {
-        $product = new Product($request->validated());
+        try
+        {
+            $data = $request->validated();
+            $product = $this->productService->createProduct($data);
 
-        if($request->hasFile('product_image')){
-            //store method returns path to file
-            $product->image_path = $request->file('product_image')->store('products');
+            return redirect('/products')->with('status', "Product {$product->id} created successfully");
         }
 
-        $product->save();
+        catch (\Exception $e) {
+            // Catch any exceptions and return an error message
+            return redirect('/products')->with('error', "Failed to create product: " . $e->getMessage());
+        }
 
-        return redirect('/products')->with('status', "Product created successfully");
     }
+
 
     /**
      * Display the specified resource.
@@ -72,40 +88,32 @@ class ProductController extends Controller
         return view('products.edit', compact('product'));
     }
 
+
+
     /**
-     * Update the specified resource in storage.
+     * Update the specified product
+     *
      * @param AdminUpdateProductRequest $request
      * @param Product $product
      * @return RedirectResponse
      */
-    public function update(AdminUpdateProductRequest $request, Product $product) : RedirectResponse
+    public function update(AdminUpdateProductRequest $request, Product $product): RedirectResponse
     {
         try
         {
-            $oldImage = $product->image_path;
-            $product->fill($request->validated());
+            $data = $request->validated();
+            $product = $this->productService->updateProduct($product, $data);
 
-            if ($request->hasFile('product_image'))
-            {
-                // update image path and store new image
-                $product->image_path = $request->file('product_image')->store('products');
-
-                // delete old image
-                if ($oldImage) {
-                    Storage::delete($oldImage);
-                }
-            }
-
-            $product->save();
-
-            return redirect('/products')->with('status', "Product {$product->id} edited successfully");
+            return redirect('/products')->with('status', "Product {$product->id} updated successfully");
         }
+
         catch (\Exception $e)
         {
-            return redirect('/products')->with('error', "Failed to edit product: " . $e->getMessage());
+            return redirect('/products')->with('error', "Failed to update product: " . $e->getMessage());
         }
 
     }
+
 
     /**
      * Remove the specified resource from storage.

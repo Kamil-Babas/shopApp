@@ -60,74 +60,6 @@
                             </div>
                         @endforeach
 
-                        <div class="col-6 col-md-6 col-lg-4 mb-3">
-                            <div class="card h-100 border-0">
-                                <div class="card-img-top">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/495px-No-Image-Placeholder.svg.png?20200912122019" class="img-fluid mx-auto d-block" alt="Card image cap">
-                                </div>
-                                <div class="card-body text-center">
-                                    <h4 class="card-title">
-                                        <a href="product.html" class=" font-weight-bold text-dark text-uppercase small"> Product name</a>
-                                    </h4>
-                                    <h5 class="card-price small text-warning">
-                                        <i>
-                                            <s>$199</s> $99</i>
-                                    </h5>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-6 col-md-6 col-lg-4 mb-3">
-                            <div class="card h-100 border-0">
-                                <div class="card-img-top">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/495px-No-Image-Placeholder.svg.png?20200912122019" class="img-fluid mx-auto d-block" alt="Card image cap">
-                                </div>
-                                <div class="card-body text-center">
-                                    <h4 class="card-title">
-                                        <a href="product.html" class=" font-weight-bold text-dark text-uppercase small"> Product name</a>
-                                    </h4>
-                                    <h5 class="card-price small text-warning">
-                                        <i>
-                                            <s>$199</s> $99</i>
-                                    </h5>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-6 col-md-6 col-lg-4 mb-3">
-                            <div class="card h-100 border-0">
-                                <div class="card-img-top">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/495px-No-Image-Placeholder.svg.png?20200912122019" class="img-fluid mx-auto d-block" alt="Card image cap">
-                                </div>
-                                <div class="card-body text-center">
-                                    <h4 class="card-title">
-                                        <a href="product.html" class=" font-weight-bold text-dark text-uppercase small"> Product name</a>
-                                    </h4>
-                                    <h5 class="card-price small text-warning">
-                                        <i>
-                                            <s>$199</s> $99</i>
-                                    </h5>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-6 col-md-6 col-lg-4 mb-3">
-                            <div class="card h-100 border-0">
-                                <div class="card-img-top">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/495px-No-Image-Placeholder.svg.png?20200912122019" class="img-fluid mx-auto d-block" alt="Card image cap">
-                                </div>
-                                <div class="card-body text-center">
-                                    <h4 class="card-title">
-                                        <a href="product.html" class=" font-weight-bold text-dark text-uppercase small"> Product name</a>
-                                    </h4>
-                                    <h5 class="card-price small text-warning">
-                                        <i>
-                                            <s>$199</s> $99</i>
-                                    </h5>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
 
 
@@ -238,7 +170,7 @@
     </div>
     <style>
         .card-img-top {
-            height: 300px !important;  /* Set a consistent height for the images */
+            /*height: 300px !important;  !* Set a consistent height for the images *!*/
             object-fit: cover;  /* Ensure images maintain aspect ratio and cover the container */
             width: 100%;  /* Ensure images fill the width of the container */
         }
