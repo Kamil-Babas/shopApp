@@ -73,7 +73,7 @@ class ProductService
         $product = new Product();
         $product->fill($data);
 
-        // Handle image upload (if any) and set image path
+        // Handle image upload (if any) and set image path, handleImageUpload returns null if image was not sent
         $product->image_path = $this->handleImageUpload($data, null);
 
         $product->save();
@@ -92,7 +92,7 @@ class ProductService
     {
         $product->fill($data);
 
-        // Handle image upload (if any) and set image path
+        // Handle image upload (if any) and set image path, handleImageUpload returns null if image was not sent
         $product->image_path = $this->handleImageUpload($data, $product);
 
         $product->save();

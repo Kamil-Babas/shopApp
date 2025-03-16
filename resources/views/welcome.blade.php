@@ -50,9 +50,10 @@
                                         <h4 class="card-title">
                                             <a href="{{route('products.show', $product->id)}}" class=" font-weight-bold text-dark text-uppercase small">{{ $product->name }}</a>
                                         </h4>
-                                        <h5 class="card-price small text-warning">
+
+                                        <h5 class="card-price small text-black fs-6">
                                             <i>
-                                                PLN {{$product->price}}
+                                                <strong class="text-warning">PLN </strong> <span class="fw-bolder">{{$product->price}} </span>
                                             </i>
                                         </h5>
                                     </div>
@@ -168,11 +169,5 @@
 
         </div>
     </div>
-    <style>
-        .card-img-top {
-            /*height: 300px !important;  !* Set a consistent height for the images *!*/
-            object-fit: cover;  /* Ensure images maintain aspect ratio and cover the container */
-            width: 100%;  /* Ensure images fill the width of the container */
-        }
-    </style>
+
 @endsection
