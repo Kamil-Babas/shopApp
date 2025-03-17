@@ -18,11 +18,11 @@
 
             <div class="row d-flex justify-content-between align-items-center mb-3">
                 <div class="col-auto">
-                    <h1 class="mb-0">{{ __('Products:') }}</h1>
+                    <h1 class="mb-0">{{ __('shop.product.products') }}</h1>
                 </div>
                 <div class="col-auto">
                     <a class="btn btn-primary fw-semibold" href="{{ route('products.create') }}">
-                        {{ __('Create Product') }}
+                        {{ __('shop.product.create_product_title') }}
                     </a>
                 </div>
             </div>
@@ -34,12 +34,12 @@
 
                 <thead class="table-dark">
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Amount</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Actions</th>
+                    <th scope="col">{{ __('shop.product.fields.id') }}</th>
+                    <th scope="col">{{ __('shop.product.fields.name') }}</th>
+                    <th scope="col">{{ __('shop.product.fields.description') }}</th>
+                    <th scope="col">{{ __('shop.product.fields.amount') }}</th>
+                    <th scope="col">{{ __('shop.product.fields.price') }}</th>
+                    <th scope="col">{{ __('shop.table_columns.actions') }}</th>
                 </tr>
                 </thead>
 
@@ -54,13 +54,13 @@
                         <td class="align-middle">{{ $product->price }}</td>
                         <td class="align-middle">
                             <a class="btn btn-primary" href="{{route('products.show', $product->id)}}">
-                                Show
+                                {{__('shop.table_columns.action_options.show')}}
                             </a>
                             <a class="btn btn-success" href="{{route('products.edit', $product->id)}}">
-                                Edit
+                                {{__('shop.table_columns.action_options.edit')}}
                             </a>
                             <button data-id="{{ $product->id }}" class=" btn btn-danger delete-resource-button">
-                                Delete
+                                {{__('shop.table_columns.action_options.delete')}}
                             </button>
                         </td>
                     </tr>

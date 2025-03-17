@@ -5,14 +5,14 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Create product') }}</div>
+                    <div class="card-header">{{ __('shop.product.create_product_title') }}</div>
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('products.store') }}" enctype="multipart/form-data">
                             @csrf
 
                             <div class="row mb-3">
-                                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
+                                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('shop.product.fields.name') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="name" type="text" maxlength="500" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -26,7 +26,7 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="description" class="col-md-4 col-form-label text-md-end">{{ __('Description') }}</label>
+                                <label for="description" class="col-md-4 col-form-label text-md-end">{{ __('shop.product.fields.description') }}</label>
 
                                 <div class="col-md-6">
                                     <textarea id="description" maxlength="1500" class="form-control @error('description') is-invalid @enderror" name="description" required autocomplete="description" autofocus>
@@ -42,7 +42,7 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="amount" class="col-md-4 col-form-label text-md-end">{{ __('Amount') }}</label>
+                                <label for="amount" class="col-md-4 col-form-label text-md-end">{{ __('shop.product.fields.amount') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="amount" type="number" min="0" class="form-control @error('amount') is-invalid @enderror" name="amount" value="{{ old('amount') }}" required autocomplete="amount">
@@ -56,7 +56,7 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="price" class="col-md-4 col-form-label text-md-end">{{ __('Price') }}</label>
+                                <label for="price" class="col-md-4 col-form-label text-md-end">{{ __('shop.product.fields.price') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="price" type="number" step="0.01" min="0.01" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" required autocomplete="price">
@@ -70,7 +70,7 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="product_image" class="col-md-4 col-form-label text-md-end">{{ __('Image') }}</label>
+                                <label for="product_image" class="col-md-4 col-form-label text-md-end">{{ __('shop.product.fields.image') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="product_image" type="file" class="form-control @error('product_image') is-invalid @enderror" name="product_image">
@@ -86,7 +86,7 @@
                             <div class="row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
-                                        {{ __('Create') }}
+                                        {{ __('shop.product.save_button') }}
                                     </button>
                                 </div>
                             </div>
