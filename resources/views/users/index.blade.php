@@ -18,12 +18,12 @@
 
                 <thead class="table-dark">
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Surname</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Phone number</th>
-                    <th scope="col">Actions</th>
+                    <th scope="col">{{ __('shop.users.fields.id') }}</th>
+                    <th scope="col">{{ __('shop.users.fields.name') }}</th>
+                    <th scope="col">{{ __('shop.users.fields.surname') }}</th>
+                    <th scope="col">{{ __('shop.users.fields.email') }}</th>
+                    <th scope="col">{{ __('shop.users.fields.phone_number') }}</th>
+                    <th scope="col">{{ __('shop.table_columns.actions') }}</th>
                 </tr>
                 </thead>
 
@@ -38,13 +38,13 @@
                         <td class="align-middle">{{ $user->phone_number }}</td>
                         <td class="align-middle">
                             <a class="btn btn-primary" href="{{route('users.show', $user->id)}}">
-                                Show
+                                {{ __('shop.table_columns.action_options.show') }}
                             </a>
                             <a class="btn btn-success" href="{{route('users.edit', $user->id)}}">
-                                Edit
+                                {{ __('shop.table_columns.action_options.edit') }}
                             </a>
                             <button data-id="{{ $user->id }}" class=" btn btn-danger delete-resource-button">
-                                Delete
+                                {{ __('shop.table_columns.action_options.delete') }}
                             </button>
                         </td>
                     </tr>

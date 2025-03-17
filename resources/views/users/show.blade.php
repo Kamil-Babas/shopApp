@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header fw-bold">{{ __('User:') . " " . $user->id }}</div>
+                    <div class="card-header fw-bold">{{ __('shop.users.user_with_id', ['id' => $user->id]) }}</div>
 
                     <div class="card-body">
 

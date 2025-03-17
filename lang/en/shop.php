@@ -36,7 +36,28 @@ return [
             'id' => 'ID',
         ],
 
-    ]
+    ],
 
+    'users' => [
+
+        'user_with_id' => 'User: :id',
+        'edit_user_with_id' => 'Edit user: :id',
+
+        'users' => 'Users:',
+
+        'create_user_title' => 'Create user',
+        'edit_user_title' => 'Edit user: ',
+
+        'fields' => [
+            'name' => 'Name',
+            'surname' => 'Surname',
+            'email' => 'Email address',
+            'phone_number' => 'Phone number',
+            'id' => 'ID',
+        ],
+
+        'save_button' => 'Save',
+
+    ]
 
 ];
