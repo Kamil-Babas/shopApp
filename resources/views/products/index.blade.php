@@ -37,6 +37,7 @@
                     <th scope="col">{{ __('shop.product.fields.id') }}</th>
                     <th scope="col">{{ __('shop.product.fields.name') }}</th>
                     <th scope="col">{{ __('shop.product.fields.description') }}</th>
+                    <th scope="col">{{ __('shop.product.fields.category') }}</th>
                     <th scope="col">{{ __('shop.product.fields.amount') }}</th>
                     <th scope="col">{{ __('shop.product.fields.price') }}</th>
                     <th scope="col">{{ __('shop.table_columns.actions') }}</th>
@@ -50,6 +51,7 @@
                         <th scope="row" class="align-middle">{{ $product->id }}</th>
                         <td class="align-middle">{{ $product->name }}</td>
                         <td class="align-middle">{{ $product->description }}</td>
+                        <td class="align-middle">{{ $product->category->name ?? '- wwywalic to z widoku (brak kategorii), '  }}</td>
                         <td class="align-middle">{{ $product->amount }}</td>
                         <td class="align-middle">{{ $product->price }}</td>
                         <td class="align-middle">

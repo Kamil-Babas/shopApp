@@ -41,9 +41,9 @@
                                 <div class="card h-100 border-0">
                                     <div class="card-img-top">
                                         @if(isset($product->image_path))
-                                            <img src="{{asset('storage/' . $product->image_path)}}" class="img-fluid mx-auto d-block" alt="Card image cap">
+                                            <img src="{{asset('storage/' . $product->image_path)}}" loading="lazy" class="img-fluid mx-auto d-block" alt="Card image cap">
                                         @else
-                                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/495px-No-Image-Placeholder.svg.png?20200912122019" width="240" height="240" class="img-fluid mx-auto d-block" alt="Card image cap">
+                                            <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/495px-No-Image-Placeholder.svg.png?20200912122019" width="240" height="240" class="img-fluid mx-auto d-block" alt="Card image cap">
                                         @endif
                                     </div>
                                     <div class="card-body text-center">

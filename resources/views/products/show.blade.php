@@ -10,8 +10,7 @@
                     <div class="card-body">
 
                         <div class="row mb-3">
-                            <label for="name"
-                                   class="col-md-4 col-form-label text-md-end fw-bold">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-end fw-bold">{{ __('shop.product.fields.name') }}</label>
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control text-center" readonly
                                        value="{{ $product->name }}">
@@ -20,17 +19,22 @@
 
                         <div class="row mb-3">
                             <label for="description"
-                                   class="col-md-4 col-form-label text-md-end fw-bold">{{ __('Description') }}</label>
+                                   class="col-md-4 col-form-label text-md-end fw-bold">{{ __('shop.product.fields.description') }}</label>
                             <div class="col-md-6">
-                                <textarea id="description" type="text" class="form-control align-middle" readonly>
-                                    {{ $product->description }}
-                                </textarea>
+                                <textarea id="description" type="text" class="form-control align-middle text-center" readonly>{{ $product->description }}</textarea>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="category" class="col-md-4 col-form-label text-md-end fw-bold">{{ __('shop.product.fields.category') }}</label>
+                            <div class="col-md-6">
+                                <input id="category" type="text" class="form-control text-center" readonly value="{{ $product->category->name }}">
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <label for="amount"
-                                   class="col-md-4 col-form-label text-md-end fw-bold">{{ __('Amount') }}</label>
+                                   class="col-md-4 col-form-label text-md-end fw-bold">{{ __('shop.product.fields.amount') }}</label>
                             <div class="col-md-6">
                                 <input id="amount" class="form-control text-center" value="{{ $product->amount }}"
                                        readonly>
@@ -39,7 +43,7 @@
 
                         <div class="row mb-3">
                             <label for="price"
-                                   class="col-md-4 col-form-label text-md-end fw-bold">{{ __('Price') }}</label>
+                                   class="col-md-4 col-form-label text-md-end fw-bold">{{ __('shop.product.fields.price') }}</label>
                             <div class="col-md-6">
                                 <input id="price" class="form-control text-center" value="{{ $product->price }}"
                                        readonly>

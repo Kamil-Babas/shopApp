@@ -29,11 +29,29 @@
                                 <label for="description" class="col-md-4 col-form-label text-md-end">{{ __('shop.product.fields.description') }}</label>
 
                                 <div class="col-md-6">
-                                    <textarea id="description" maxlength="1500" class="form-control @error('description') is-invalid @enderror" name="description" required autocomplete="description" autofocus>
-                                        {{ old('description') }}
-                                    </textarea>
+                                    <textarea id="description" maxlength="1500" class="form-control @error('description') is-invalid @enderror" name="description" required autocomplete="description" autofocus>{{old('description')}}</textarea>
 
                                     @error('description')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="category_id" class="col-md-4 col-form-label text-md-end">{{ __('shop.product.fields.category') }}</label>
+
+                                <div class="col-md-6">
+
+                                    <select id="category_id" name="category_id" class="form-select form-control @error('category_id') is-invalid @enderror" required>
+                                        <option value="" disabled selected>Select product category</option>
+                                    @foreach($categories as $category)
+                                            <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }} >{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
+
+                                    @error('category_id')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

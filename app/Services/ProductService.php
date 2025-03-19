@@ -16,8 +16,6 @@ class ProductService
      *
      * @param array $data
      * @param Product|null $product
-     * @param int $resizeToWidth
-     * @param int $resizeToHeight
      * @return string|null
      */
     private function handleImageUpload(array $data, Product $product = null): ?string
@@ -26,7 +24,14 @@ class ProductService
             return $this->resizeUploadedImage($data['product_image'], $product, 300, 300);
         }
 
+        if($product)
+        {   // return old imagePath if product has image
+            return $product->image_path ?? null;
+        }
+
+        // return null when product is being created for the very first time and didnt have image uploaded
         return null;
+
     }
 
 
@@ -74,7 +79,7 @@ class ProductService
         $product->fill($data);
 
         // Handle image upload (if any) and set image path, handleImageUpload returns null if image was not sent
-        $product->image_path = $this->handleImageUpload($data, null);
+        $product->image_path = $this->handleImageUpload($data);
 
         $product->save();
 

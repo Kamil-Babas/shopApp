@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\adminCreateProductRequest;
 use App\Http\Requests\AdminUpdateProductRequest;
 use App\Models\Product;
+use App\Models\ProductCategory;
 use App\Services\ProductService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
@@ -30,7 +31,7 @@ class ProductController extends Controller
      */
     public function index() : View
     {
-        $products = Product::orderBy('id', "DESC")->paginate(10);
+        $products = Product::orderBy('id', "DESC")->with('category')->paginate(10);
 
         return view("products.index", compact("products"));
     }
@@ -42,7 +43,9 @@ class ProductController extends Controller
      */
     public function create() : view
     {
-        return view('products.create');
+        $categories = ProductCategory::all();
+
+        return view('products.create', compact('categories'));
     }
 
 
@@ -85,7 +88,9 @@ class ProductController extends Controller
      */
     public function edit(Product $product) : View
     {
-        return view('products.edit', compact('product'));
+        $categories = ProductCategory::all();
+
+        return view('products.edit', compact('product', 'categories'));
     }
 
 

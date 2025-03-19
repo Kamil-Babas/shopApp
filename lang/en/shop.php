@@ -30,6 +30,7 @@ return [
         'fields' => [
             'name' => 'Name',
             'description' => 'Description',
+            'category' => 'Category',
             'amount' => 'Amount',
             'price' => 'Price',
             'image' => 'Image',
