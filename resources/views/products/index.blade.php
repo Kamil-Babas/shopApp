@@ -18,7 +18,7 @@
 
             <div class="row d-flex justify-content-between align-items-center mb-3">
                 <div class="col-auto">
-                    <h1 class="mb-0">{{ __('shop.product.products') }}</h1>
+                    <h1 class="mb-0">{{ __('shop.product.products:') }}</h1>
                 </div>
                 <div class="col-auto">
                     <a class="btn btn-primary fw-semibold" href="{{ route('products.create') }}">
@@ -40,7 +40,9 @@
                     <th scope="col">{{ __('shop.product.fields.category') }}</th>
                     <th scope="col">{{ __('shop.product.fields.amount') }}</th>
                     <th scope="col">{{ __('shop.product.fields.price') }}</th>
+                    <th scope="col">{{ __('shop.table_columns.has_image') }}</th>
                     <th scope="col">{{ __('shop.table_columns.actions') }}</th>
+
                 </tr>
                 </thead>
 
@@ -51,9 +53,16 @@
                         <th scope="row" class="align-middle">{{ $product->id }}</th>
                         <td class="align-middle">{{ $product->name }}</td>
                         <td class="align-middle">{{ $product->description }}</td>
-                        <td class="align-middle">{{ $product->category->name ?? '- wwywalic to z widoku (brak kategorii), '  }}</td>
+                        <td class="align-middle">{{ $product->category->name ?? '- wwywalic to z widoku (brak kategorii)'  }}</td>
                         <td class="align-middle">{{ $product->amount }}</td>
                         <td class="align-middle">{{ $product->price }}</td>
+                        <td class="align-middle">
+                            @if($product->hasImage())
+                                <i class="fa-regular fa-circle-check text-success" style="font-size: 1.7rem"></i>
+                            @else
+                                <i class="fa-regular fa-circle-xmark text-danger" style="font-size: 1.7rem"></i>
+                            @endif
+                        </td>
                         <td class="align-middle">
                             <a class="btn btn-primary" href="{{route('products.show', $product->id)}}">
                                 {{__('shop.table_columns.action_options.show')}}

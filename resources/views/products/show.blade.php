@@ -28,7 +28,7 @@
                         <div class="row mb-3">
                             <label for="category" class="col-md-4 col-form-label text-md-end fw-bold">{{ __('shop.product.fields.category') }}</label>
                             <div class="col-md-6">
-                                <input id="category" type="text" class="form-control text-center" readonly value="{{ $product->category->name }}">
+                                <input id="category" type="text" class="form-control text-center" readonly value="{{ $product->category->name ?? 'nie przypisano'}}">
                             </div>
                         </div>
 

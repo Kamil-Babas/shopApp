@@ -45,7 +45,7 @@
                                 <div class="col-md-6">
 
                                     <select id="category_id" name="category_id" class="form-select form-control @error('category_id') is-invalid @enderror" required>
-                                        <option value="" disabled selected>Select product category</option>
+                                        <option value="" disabled selected>{{ __('shop.product.select_category') }}</option>
                                     @foreach($categories as $category)
                                             <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }} >{{ $category->name }}</option>
                                         @endforeach

@@ -26,4 +26,9 @@ class Product extends Model
         return $this->belongsTo(ProductCategory::class);
     }
 
+    public function hasImage() : bool
+    {
+        return !is_null($this->image_path);
+    }
+
 }

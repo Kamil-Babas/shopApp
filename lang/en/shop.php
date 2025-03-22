@@ -3,9 +3,9 @@
 return [
 
 
-
     'table_columns' =>[
         'actions' => 'Actions',
+        'has_image' => 'hasImage',
         'action_options' => [
             'show' => 'Show',
             'edit' => 'Edit',
@@ -15,16 +15,26 @@ return [
 
     'product' => [
 
+        // in index
+        'showing' => 'Showing ',
+        'number' => ':number ',
+        'price' => 'PRICE',
+        'filter_products' => 'Filter products',
+        // index end
+
         'product_with_id' => 'Product: :id',
         'edit_product_with_id' => 'Edit product: :id',
 
-        'products' => 'Products:',
+        'products' => 'Products',
+        'products:' => 'Products:',
+        'categories' => 'Categories',
 
         'create_product_title' => 'Create product',
         'edit_product_title' => 'Edit product: ',
 
 
         'save_button' => 'Save',
+        'select_category' => 'Select product category',
 
 
         'fields' => [
