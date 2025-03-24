@@ -17,7 +17,6 @@ return [
 
         // in index
         'showing' => 'Showing ',
-        'number' => ':number ',
         'price' => 'PRICE',
         'filter_products' => 'Filter products',
         // index end

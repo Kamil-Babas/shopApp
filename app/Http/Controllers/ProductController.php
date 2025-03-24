@@ -16,7 +16,7 @@ use Illuminate\View\View;
 class ProductController extends Controller
 {
 
-    public ProductService $productService;
+    private ProductService $productService;
 
 
     public function __construct(ProductService $productService)

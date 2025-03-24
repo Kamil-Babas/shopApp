@@ -94,7 +94,7 @@
 
 
     <script>
-        @yield('javascript_variables');
+        @yield('javascript_variables')
     </script>
 
 
