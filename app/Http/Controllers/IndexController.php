@@ -32,9 +32,7 @@ class IndexController extends Controller
         {
             return response()->json([
                 'status' => 'success',
-                'data' => [
-                    'products' => $this->indexService->getProducts($request)
-                ]
+                'products' => $this->indexService->getProducts($request)
             ], 200);
         }
         else

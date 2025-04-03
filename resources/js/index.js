@@ -14,6 +14,7 @@ filterButton.click((e) => {
 
     apiPage = 1;
     sendRequest(paginate, apiPage, orderBy);
+
 });
 
 
@@ -169,45 +170,60 @@ function removePageParam() {
 
 }
 
+function validatePrices() {
+
+    const priceMin = parseFloat($('#price-min-control').val()) || 0;
+    const priceMax = parseFloat($('#price-max-control').val()) || 0;
+
+    if (priceMin && priceMax && priceMin > priceMax) {
+        alert('Price "from" cannot be greater than price "to"');
+        return false;
+    }
+
+    return true;
+}
+
 
 function sendRequest(productsPaginationNumber, apiPage, orderBy)
 {
-    const formData = $('#productsForm').serialize();
-    const paramsData = formData + "&" + $.param({paginate: productsPaginationNumber}) +
-        "&" + $.param({page: apiPage}) +
-        "&" + $.param({orderBy: orderBy});
+    if(validatePrices()){
+        const formData = $('#productsForm').serialize();
+        const paramsData = formData + "&" + $.param({paginate: productsPaginationNumber}) +
+            "&" + $.param({page: apiPage}) +
+            "&" + $.param({orderBy: orderBy});
 
-    // if user used pagination nav from view.blade.php it would generate ?page param
-    removePageParam();
+        // if user used pagination nav from view.blade.php it would generate ?page param
+        removePageParam();
 
-    $.ajax({
-        url: "/",
-        type: 'GET',
-        data: paramsData,
-        dataType: 'json',
-        success: function(res)
-        {
-            let productsContainer = $('div#products-wrapper');
-            productsContainer.empty();
+        $.ajax({
+            url: "/",
+            type: 'GET',
+            data: paramsData,
+            dataType: 'json',
+            success: function(res)
+            {
+                let productsContainer = $('div#products-wrapper');
+                productsContainer.empty();
 
-            const products = res.data.products.data;
-            $.each(products, function(index, product) {
-                generateProductElement(productsContainer, product);
-            });
+                const products = res.products.data;
+                $.each(products, function(index, product) {
+                    generateProductElement(productsContainer, product);
+                });
 
-            $('#productsToShow').text(res.data.products.total)
+                $('#productsToShow').text(res.products.total)
 
-            // Remove old pagination and update with new one
-            $('#products_pagination_nav').empty().append('<nav><ul class="pagination"></ul></nav>');
+                // Remove old pagination and update with new one
+                $('#products_pagination_nav').empty().append('<nav><ul class="pagination"></ul></nav>');
 
-            // Update pagination dynamically
-            updateNavigation(res.data.products);
+                // Update pagination dynamically
+                updateNavigation(res.products);
 
-        },
-        error: function()
-        {
-            alert('something went wrong');
-        }
-    });
+            },
+            error: function()
+            {
+                alert('something went wrong');
+            }
+        });
+    }
 
 }
