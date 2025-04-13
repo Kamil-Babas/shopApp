@@ -25,7 +25,7 @@ Route::middleware(['auth', 'verified'])->group(function()
 
 Route::get('/email/verify', function () {
     return view('auth.verify');
-})->middleware('auth')->name('verification.notice');
+})->middleware(['auth', 'redirect.if.email.verified'])->name('verification.notice');
 
 
 // handle request generated when the user clicks the email verification link that was emailed
