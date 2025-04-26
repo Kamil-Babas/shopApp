@@ -62,6 +62,7 @@ class RegisterController extends Controller
      *
      * @param  array  $data
      * @return \App\Models\User
+     * creates user with default role of user (role_id = 2)
      */
     protected function create(array $data)
     {
@@ -71,6 +72,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'phone_number' => $data['phone_number'],
             'password' => Hash::make($data['password']),
+            'role_id' => 2
         ]);
     }
 }

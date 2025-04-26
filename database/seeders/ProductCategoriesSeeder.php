@@ -15,9 +15,25 @@ class ProductCategoriesSeeder extends Seeder
     public function run(): void
     {
         $categories = [
-            ['name' => 'Electronics'],
-            ['name' => 'Clothing'],
-            ['name' => 'Other'],
+            
+            [
+                'name' => 'Electronics',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            
+            [
+                'name' => 'Clothing',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            
+            [
+                'name' => 'Other',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            
         ];
 
         // Sort categories alphabetically by the 'name' field
